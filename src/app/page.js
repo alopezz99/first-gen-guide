@@ -12,11 +12,10 @@ export default function Home() {
         <a href="/career" className="hover:opacity-60">Career</a>
           <a href="#" className="hover:opacity-60">Money</a>
           <a href="#" className="hover:opacity-60">Corporate Life</a>
-          <a href="#" className="hover:opacity-60">Education</a>
+          <a href="/college" className="hover:opacity-60">College</a>
+          <a href="/feedback" className="hover:opacity-60">Give Feedback</a>
 
-          <button className="bg-[#244A3F] text-white px-5 py-2 rounded-full">
-            Start Here
-          </button>
+         
         </div>
       </nav>
 
@@ -38,19 +37,22 @@ export default function Home() {
           things nobody taught us.
         </p>
 
-        <button className="bg-[#244A3F] text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90">
-          Start Your Journey →
-        </button>
+        <a
+  href="#journey"
+  className="inline-block bg-[#244A3F] text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90"
+>
+  Start Your Journey →
+</a>
 
       </section>
 
 
       {/* Journey Section */}
-      <section className="max-w-6xl mx-auto px-8 py-20">
+      <section id="journey" className="max-w-6xl mx-auto px-8 py-20">
 
         <div className="text-center mb-12">
           <p className="text-[#B36B45] font-semibold mb-3">
-            YOUR JOURNEY
+            START YOUR JOURNEY
           </p>
 
           <h2 className="text-4xl font-bold">
@@ -65,16 +67,21 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div className="bg-white p-7 rounded-2xl shadow-sm">
-            <div className="text-3xl mb-4">🎓</div>
-            <h3 className="text-xl font-bold mb-3">
-              I'm in college
-            </h3>
-            <p className="text-gray-600">
-              Internships, networking, choosing your path, and preparing
-              for life after graduation.
-            </p>
-          </div>
+        <a
+  href="/college"
+  className="block bg-white p-7 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer"
+>
+  <div className="text-3xl mb-4">🎓</div>
+
+  <h3 className="text-xl font-bold mb-3">
+    I'm in college
+  </h3>
+
+  <p className="text-gray-600">
+    Internships, networking, choosing your path, and preparing
+    for life after graduation.
+  </p>
+</a>
 
 
           <div className="bg-white p-7 rounded-2xl shadow-sm">
