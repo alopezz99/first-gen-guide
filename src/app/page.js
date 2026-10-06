@@ -9,13 +9,32 @@ export default function Home() {
         </div>
 
         <div className="hidden md:flex gap-8 items-center">
-        <a href="/career" className="hover:opacity-60">Career</a>
-          <a href="#" className="hover:opacity-60">Money</a>
-          <a href="#" className="hover:opacity-60">Corporate Life</a>
-          <a href="/college" className="hover:opacity-60">College</a>
-          <a href="/feedback" className="hover:opacity-60">Give Feedback</a>
+          <a href="/career" className="hover:opacity-60">
+            Career
+          </a>
 
-         
+          <a href="#" className="hover:opacity-60">
+            Money
+          </a>
+
+          <a href="#" className="hover:opacity-60">
+            Corporate Life
+          </a>
+
+          <a href="/college" className="hover:opacity-60">
+            College
+          </a>
+
+          <a
+            href="/tools/resume-translator"
+            className="hover:opacity-60"
+          >
+            Resume Tool
+          </a>
+
+          <a href="/feedback" className="hover:opacity-60">
+            Give Feedback
+          </a>
         </div>
       </nav>
 
@@ -38,11 +57,55 @@ export default function Home() {
         </p>
 
         <a
-  href="#journey"
-  className="inline-block bg-[#244A3F] text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90"
->
-  Start Your Journey →
-</a>
+          href="#journey"
+          className="inline-block bg-[#244A3F] text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90"
+        >
+          Start Your Journey →
+        </a>
+
+      </section>
+
+
+      {/* Resume Translator Feature */}
+      <section className="max-w-6xl mx-auto px-8 pb-20">
+
+        <div className="bg-[#244A3F] text-white rounded-3xl p-10 md:p-14">
+
+          <p className="text-[#E7B08E] font-semibold mb-3">
+            FREE AI TOOL
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-5">
+                Turn your experience into resume-ready language.
+              </h2>
+
+              <p className="text-lg text-gray-200 leading-relaxed">
+                Describe your job, internship, volunteer work, class
+                project, or side hustle in your own words. Our Resume
+                Experience Translator helps turn it into professional
+                resume bullets without making up experience you don't have.
+              </p>
+            </div>
+
+            <div className="md:text-right">
+              <a
+                href="/tools/resume-translator"
+                className="inline-block bg-white text-[#244A3F] px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90"
+              >
+                Try the Resume Translator →
+              </a>
+
+              <p className="text-sm text-gray-300 mt-4">
+                Free to try. No resume jargon required.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
 
       </section>
 
@@ -51,6 +114,7 @@ export default function Home() {
       <section id="journey" className="max-w-6xl mx-auto px-8 py-20">
 
         <div className="text-center mb-12">
+
           <p className="text-[#B36B45] font-semibold mb-3">
             START YOUR JOURNEY
           </p>
@@ -62,45 +126,53 @@ export default function Home() {
           <p className="text-gray-600 mt-4">
             Start with where you are. We'll help you figure out what comes next.
           </p>
+
         </div>
 
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <a
-  href="/college"
-  className="block bg-white p-7 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer"
->
-  <div className="text-3xl mb-4">🎓</div>
+          <a
+            href="/college"
+            className="block bg-white p-7 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer"
+          >
+            <div className="text-3xl mb-4">🎓</div>
 
-  <h3 className="text-xl font-bold mb-3">
-    I'm in college
-  </h3>
+            <h3 className="text-xl font-bold mb-3">
+              I'm in college
+            </h3>
 
-  <p className="text-gray-600">
-    Internships, networking, choosing your path, and preparing
-    for life after graduation.
-  </p>
-</a>
+            <p className="text-gray-600">
+              Internships, networking, choosing your path, and preparing
+              for life after graduation.
+            </p>
+          </a>
 
 
-          <div className="bg-white p-7 rounded-2xl shadow-sm">
+          <a
+            href="/career"
+            className="block bg-white p-7 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer"
+          >
             <div className="text-3xl mb-4">🔎</div>
+
             <h3 className="text-xl font-bold mb-3">
               I'm job searching
             </h3>
+
             <p className="text-gray-600">
               Resumes, interviews, salaries, and finding opportunities
               you're actually qualified for.
             </p>
-          </div>
+          </a>
 
 
           <div className="bg-white p-7 rounded-2xl shadow-sm">
             <div className="text-3xl mb-4">💼</div>
+
             <h3 className="text-xl font-bold mb-3">
               I'm starting my career
             </h3>
+
             <p className="text-gray-600">
               Benefits, mentors, corporate culture, performance reviews,
               and everything nobody explains.
@@ -110,9 +182,11 @@ export default function Home() {
 
           <div className="bg-white p-7 rounded-2xl shadow-sm">
             <div className="text-3xl mb-4">🚀</div>
+
             <h3 className="text-xl font-bold mb-3">
               I'm ready for more
             </h3>
+
             <p className="text-gray-600">
               Promotions, certifications, graduate school, career pivots,
               and growing your income.
