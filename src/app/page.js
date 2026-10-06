@@ -31,6 +31,8 @@ export default function Home() {
           >
             Resume Tool
           </a>
+          
+          <a href="/about" className="hover:opacity-60">About Me</a>
 
           <a href="/feedback" className="hover:opacity-60">
             Give Feedback
