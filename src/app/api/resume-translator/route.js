@@ -16,7 +16,7 @@ export async function POST(request) {
     }
 
     const response = await openai.responses.create({
-      model: "gpt-5-mini",
+        model: "gpt-6-luna",
 
       instructions: `
 You are a careful resume coach for The First-Gen Guide,
