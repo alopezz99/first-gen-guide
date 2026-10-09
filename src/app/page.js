@@ -3,43 +3,74 @@ export default function Home() {
     <main className="min-h-screen bg-[#FAF8F4] text-[#1F2937]">
 
       {/* Navigation */}
-      <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
-        <div className="text-2xl font-bold">
-          The First-Gen Guide
-        </div>
+      
+<nav className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between gap-6">
+  <a
+    href="/"
+    className="text-xl font-bold text-[#244A3F] whitespace-nowrap"
+  >
+    The First-Gen Guide
+  </a>
 
-        <div className="hidden md:flex gap-8 items-center">
-          <a href="/career" className="hover:opacity-60">
-            Career
-          </a>
+  {/* Desktop Navigation */}
+  <div className="hidden lg:flex items-center gap-6 text-sm">
+    <a href="/college" className="hover:text-[#B36B45]">
+      College
+    </a>
 
-          <a href="#" className="hover:opacity-60">
-            Money
-          </a>
+    <a href="/career" className="hover:text-[#B36B45]">
+      Career
+    </a>
 
-          <a href="#" className="hover:opacity-60">
-            Corporate Life
-          </a>
+    <a href="/community" className="hover:text-[#B36B45]">
+      Community
+    </a>
 
-          <a href="/college" className="hover:opacity-60">
-            College
-          </a>
+    {/* Resources Dropdown */}
+    <details className="relative group">
+      <summary className="cursor-pointer list-none hover:text-[#B36B45]">
+        Resources ▾
+      </summary>
 
-          <a
-            href="/tools/resume-translator"
-            className="hover:opacity-60"
-          >
-            Resume Tool
-          </a>
-          
-          <a href="/about" className="hover:opacity-60">About Me</a>
+      <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-xl shadow-lg p-4 z-50 flex flex-col gap-4">
+        <a href="/tools/resume-translator">Resume Tool</a>
+        <a href="/about">About Me</a>
+        <a href="/feedback">Give Feedback</a>
+      </div>
+    </details>
 
-          <a href="/feedback" className="hover:opacity-60">
-            Give Feedback
-          </a>
-        </div>
-      </nav>
+    <a href="/login" className="hover:text-[#B36B45]">
+      Log In
+    </a>
 
+    <a
+      href="/signup"
+      className="bg-[#244A3F] text-white px-5 py-2 rounded-full hover:opacity-90"
+    >
+      Sign Up
+    </a>
+  </div>
+
+  {/* Mobile / Tablet Navigation */}
+  <details className="relative lg:hidden">
+    <summary className="cursor-pointer list-none text-[#244A3F] font-semibold">
+      ☰ Menu
+    </summary>
+
+    <div className="absolute right-0 top-full mt-3 w-56 bg-white rounded-xl shadow-lg p-5 z-50 flex flex-col gap-4">
+      <a href="/college">College</a>
+      <a href="/career">Career</a>
+      <a href="/community">Community</a>
+      <a href="/tools/resume-translator">Resume Tool</a>
+      <a href="/about">About Me</a>
+      <a href="/feedback">Give Feedback</a>
+      <a href="/login">Log In</a>
+      <a href="/signup" className="font-bold text-[#244A3F]">
+        Sign Up
+      </a>
+    </div>
+  </details>
+</nav>
 
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-8 py-24 text-center">
