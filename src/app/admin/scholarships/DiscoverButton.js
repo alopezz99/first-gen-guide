@@ -9,16 +9,20 @@ export default function DiscoverButton() {
   const [scholarships, setScholarships] = useState([]);
   const [error, setError] = useState("");
 
-  async function discoverScholarships() {
+  async function discoverScholarships(region) {
+    try {
     setLoading(true);
     setError("");
     setResults([]);
     setScholarships([]);
 
-    try {
-      const response = await fetch("/api/scholarships/discover", {
+    const response = await fetch("/api/scholarships/discover", {
         method: "POST",
-      });
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ region }),
+      }); 
 
       const data = await response.json();
 
@@ -37,14 +41,25 @@ export default function DiscoverButton() {
 
   return (
     <div className="mb-10">
-      <button
-        type="button"
-        onClick={discoverScholarships}
-        disabled={loading}
-        className="bg-[#244A3F] text-white px-6 py-3 rounded-full font-semibold disabled:opacity-50"
-      >
-        {loading ? "Searching..." : "🔎 Discover Scholarships"}
-      </button>
+  <div className="flex flex-wrap gap-3">
+    <button
+      type="button"
+      onClick={() => discoverScholarships("wisconsin")}
+      disabled={loading}
+      className="bg-[#244A3F] text-white px-6 py-3 rounded-full font-semibold disabled:opacity-50"
+    >
+      {loading ? "Searching..." : "🔎 Discover Wisconsin Scholarships"}
+    </button>
+
+    <button
+      type="button"
+      onClick={() => discoverScholarships("national")}
+      disabled={loading}
+      className="bg-white text-[#244A3F] border border-[#244A3F] px-6 py-3 rounded-full font-semibold hover:bg-gray-50 disabled:opacity-50"
+    >
+      {loading ? "Searching..." : "🌎 Discover National Scholarships"}
+    </button>
+  </div>
 
       {error && (
         <p className="mt-4 text-red-600">{error}</p>

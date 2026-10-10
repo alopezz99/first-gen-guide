@@ -5,7 +5,7 @@ import { extractScholarship } from "@/lib/scholarship-ai";
 import { saveDiscoveredScholarships } from "@/lib/save-scholarships";
 import { fetchScholarshipPage } from "@/lib/scholarship-page";
 
-export async function POST() {
+export async function POST(request) {
   const supabase = await createSupabaseServerClient();
 
   // Require a logged-in user.
@@ -45,9 +45,20 @@ export async function POST() {
   }
 
   try {
-    
-    const query ="Wisconsin Milwaukee scholarships college students first generation 2026 2027 application";
-
+    const { region } = await request.json();
+  
+    if (!["wisconsin", "national"].includes(region)) {
+      return NextResponse.json(
+        { error: "Please select Wisconsin or National scholarships." },
+        { status: 400 }
+      );
+    }
+  
+    const query =
+      region === "national"
+        ? "first generation college student scholarships nationwide 2026 2027 application"
+        : "Wisconsin Milwaukee scholarships college students first generation 2026 2027 application";
+  
     const params = new URLSearchParams({
       q: query,
       count: "10",
