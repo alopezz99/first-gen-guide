@@ -14,17 +14,10 @@ export default function Home() {
 
   {/* Desktop Navigation */}
   <div className="hidden lg:flex items-center gap-6 text-sm">
-    <a href="/college" className="hover:text-[#B36B45]">
-      College
-    </a>
-
-    <a href="/career" className="hover:text-[#B36B45]">
-      Career
-    </a>
-
-    <a href="/community" className="hover:text-[#B36B45]">
-      Community
-    </a>
+  <a href="/college">College</a>
+<a href="/scholarships">Scholarships</a>
+<a href="/career">Career</a>
+<a href="/community">Community</a>
 
     {/* Resources Dropdown */}
     <details className="relative group">
@@ -58,8 +51,17 @@ export default function Home() {
     </summary>
 
     <div className="absolute right-0 top-full mt-3 w-56 bg-white rounded-xl shadow-lg p-5 z-50 flex flex-col gap-4">
-      <a href="/college">College</a>
-      <a href="/career">Career</a>
+    <a href="/college" className="hover:text-[#B36B45]">
+  College
+</a>
+
+<a href="/scholarships" className="hover:text-[#B36B45]">
+  Scholarships
+</a>
+
+<a href="/career" className="hover:text-[#B36B45]">
+  Career
+</a>
       <a href="/community">Community</a>
       <a href="/tools/resume-translator">Resume Tool</a>
       <a href="/about">About Me</a>
