@@ -31,7 +31,11 @@ export default function Home() {
         <a href="/feedback">Give Feedback</a>
       </div>
     </details>
-
+    <a href="/profile"
+  className="font-semibold text-[#244A3F] hover:text-[#B36B45]"
+>
+  My Profile
+</a>
     <a href="/login" className="hover:text-[#B36B45]">
       Log In
     </a>
@@ -66,6 +70,9 @@ export default function Home() {
       <a href="/tools/resume-translator">Resume Tool</a>
       <a href="/about">About Me</a>
       <a href="/feedback">Give Feedback</a>
+      <a href="/profile" className="font-semibold text-[#244A3F]">
+  My Profile
+</a>
       <a href="/login">Log In</a>
       <a href="/signup" className="font-bold text-[#244A3F]">
         Sign Up

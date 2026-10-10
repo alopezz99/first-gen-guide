@@ -29,7 +29,8 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/");
+    router.replace("/profile");
+router.refresh();
   }
 
   return (
