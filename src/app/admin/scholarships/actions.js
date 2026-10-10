@@ -213,4 +213,70 @@ export async function updateScholarshipDetails(formData) {
   
     revalidatePath("/admin/scholarships");
   }
+  export async function updateApprovedScholarshipLink(formData) {
+    "use server";
   
+    const supabase = await createSupabaseServerClient();
+  
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+  
+    if (authError || !user) {
+      throw new Error("You must be logged in.");
+    }
+  
+    const { data: admin, error: adminError } = await supabase
+      .from("admin_users")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+  
+    if (adminError || !admin) {
+      throw new Error("Administrator access required.");
+    }
+  
+    const scholarshipId = Number(formData.get("scholarship_id"));
+    const applicationUrl = String(
+      formData.get("application_url") || ""
+    ).trim();
+  
+    if (!Number.isSafeInteger(scholarshipId) || scholarshipId <= 0) {
+      throw new Error("Invalid scholarship ID.");
+    }
+  
+    if (!applicationUrl) {
+      throw new Error("Application URL is required.");
+    }
+  
+    try {
+      const parsed = new URL(applicationUrl);
+  
+      if (parsed.protocol !== "https:") {
+        throw new Error("HTTPS required.");
+      }
+    } catch {
+      throw new Error("Enter a valid HTTPS application URL.");
+    }
+  
+    const { data: updated, error } = await supabase
+      .from("scholarships")
+      .update({ application_url: applicationUrl })
+      .eq("id", scholarshipId)
+      .eq("status", "approved")
+      .eq("verification_status", "verified")
+      .select("id")
+      .maybeSingle();
+  
+    if (error) {
+      throw new Error(`Unable to save application link: ${error.message}`);
+    }
+  
+    if (!updated) {
+      throw new Error("Approved scholarship not found.");
+    }
+  
+    revalidatePath("/admin/scholarships");
+    revalidatePath("/scholarships");
+  }

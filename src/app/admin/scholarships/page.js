@@ -5,6 +5,7 @@ import {
     reviewScholarship,
     verifyScholarship,
     updateScholarshipDetails,
+    updateApprovedScholarshipLink,
   } from "./actions";
 import DiscoverButton from "./DiscoverButton";
 import EditScholarshipForm from "./EditScholarshipForm";
@@ -74,7 +75,20 @@ export default async function ScholarshipAdminPage() {
     );
   }
 
+// Retrieve approved scholarships for editing application links
+const { data: approvedScholarships, error: approvedError } =
+  await supabase
+    .from("scholarships")
+    .select("id, title, organization, application_url")
+    .eq("status", "approved")
+    .eq("verification_status", "verified")
+    .order("published_at", { ascending: false });
 
+if (approvedError) {
+  throw new Error(
+    `Unable to load approved scholarships: ${approvedError.message}`
+  );
+}
   return (
     <main className="min-h-screen bg-[#FAF8F4] px-6 py-12">
       <div className="max-w-5xl mx-auto">
@@ -286,6 +300,75 @@ export default async function ScholarshipAdminPage() {
   )}
 </div>
 
+        {/* Approved scholarship application links */}
+        <section className="mt-10 rounded-2xl bg-white p-8 shadow-sm">
+          <h2 className="mb-3 text-2xl font-bold text-[#244A3F]">
+            Approved Scholarships
+          </h2>
+
+          <p className="mb-6 text-gray-600">
+            Add or update application links without changing
+            a scholarship's approved status.
+          </p>
+
+          {approvedScholarships.length === 0 ? (
+            <p className="text-gray-500">
+              No approved scholarships found.
+            </p>
+          ) : (
+            <div className="space-y-6">
+              {approvedScholarships.map((scholarship) => (
+                <div
+                  key={scholarship.id}
+                  className="rounded-xl border border-gray-200 p-5"
+                >
+                  <h3 className="font-bold text-[#244A3F]">
+                    {scholarship.title}
+                  </h3>
+
+                  <p className="mt-1 text-sm text-gray-600">
+                    {scholarship.organization}
+                  </p>
+
+                  <form
+                    action={updateApprovedScholarshipLink}
+                    className="mt-4 space-y-3"
+                  >
+                    <input
+                      type="hidden"
+                      name="scholarship_id"
+                      value={scholarship.id}
+                    />
+
+                    <label
+                      htmlFor={`application-${scholarship.id}`}
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Application URL
+                    </label>
+
+                    <input
+                      id={`application-${scholarship.id}`}
+                      type="url"
+                      name="application_url"
+                      defaultValue={scholarship.application_url || ""}
+                      placeholder="https://example.com/apply"
+                      required
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3"
+                    />
+
+                    <button
+                      type="submit"
+                      className="rounded-full bg-[#244A3F] px-5 py-2 text-white hover:opacity-90"
+                    >
+                      Save Application Link
+                    </button>
+                  </form>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       </div>
     </main>
   );
