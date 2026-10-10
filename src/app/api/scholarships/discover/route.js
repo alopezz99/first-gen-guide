@@ -45,8 +45,8 @@ export async function POST() {
   }
 
   try {
-    const query =
-      "first generation college student scholarships 2026 2027";
+    
+    const query ="Wisconsin Milwaukee scholarships college students first generation 2026 2027 application";
 
     const params = new URLSearchParams({
       q: query,
