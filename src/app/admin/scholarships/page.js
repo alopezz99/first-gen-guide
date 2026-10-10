@@ -348,14 +348,25 @@ if (approvedError) {
                     </label>
 
                     <input
-                      id={`application-${scholarship.id}`}
-                      type="url"
-                      name="application_url"
-                      defaultValue={scholarship.application_url || ""}
-                      placeholder="https://example.com/apply"
-                      required
-                      className="w-full rounded-lg border border-gray-300 px-4 py-3"
-                    />
+  id={`application-${scholarship.id}`}
+  type="url"
+  name="application_url"
+  defaultValue={scholarship.application_url || ""}
+  placeholder="https://example.com/apply"
+  required
+  className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400"
+/>
+
+{scholarship.application_url && (
+  <a
+    href={scholarship.application_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block text-sm font-medium text-[#244A3F] underline break-all hover:text-[#B36B45]"
+  >
+    View Current Application Link ↗
+  </a>
+)}
 
                     <button
                       type="submit"
